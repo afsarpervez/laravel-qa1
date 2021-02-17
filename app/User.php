@@ -26,4 +26,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function questions(){
+        return $this->hasMany(Question::class);
+    }
+
+    //Following Mutator will be in Question Model
+    public function setTitle($valu){
+        $this->attributes['title']=$value;
+        $this->attribute['slug']=str_slug($value);
+    }
 }
